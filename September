@@ -37,7 +37,56 @@ public:
     }
 };
 
-//<-------------------------------------------------DAY-3-04/09/24--------------------------------------------------------->
+//<-------------------------------------------------DAY-3-05/09/24--------------------------------------------------------->
+#202.HAPPY NUMBER LEETCODE
+class Solution {
+public:
+    bool isHappy(int n) {
+
+     //***BOTH APPROACHES HAVE SAME TIME AND SPACE COMPLEXITY***
+
+        // <------------------USING RECURSION------------------->
+        // <---THIS IS OPTIMISED O(LOGN) AND O(1) TIME AND SPACE COMPLEXITY--->
+        // if(n==4) return false;
+        // if(n==1) return true;
+        // int nextN=0;
+        // int rem=0;
+        // while(n>0){
+        //      rem=n%10;
+        //      nextN+=rem*rem;
+        //     n/=10;
+        // }
+        // return isHappy(nextN);
+
+
+    //    //<-----------FLOYD'S CYCLE DETECTION ALGO---------->
+    //    //<<---ALSO CALLED TURTOISE OR HARE ALGO--->>
+
+    //    int slow=n;
+    //    int fast=findNext(n);
+    //    while(fast!=1&& slow!=fast){
+    //     slow=findNext(slow);
+    //     fast=findNext(findNext(fast));
+    //    }
+    //    if(fast==1) return true;
+
+    //    return false;
+    // }
+    // int findNext(int n){
+    //     int rem=0;
+    //     int nextN=0;
+    //     while(n>0){
+    //   rem=n%10;
+    //   nextN+=rem*rem;
+    //   n/=10;
+    //     }
+    //     return nextN;
+    }
+};
+
+//<--------------------------------------------------DAY-4 06/09/24-------------------------------------------------------->
+
+
 
 
 
