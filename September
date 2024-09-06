@@ -85,6 +85,28 @@ public:
 };
 
 //<--------------------------------------------------DAY-4 06/09/24-------------------------------------------------------->
+#1877.Minimize Maximum Pair Sum in array LEETCODE
+class Solution {
+public:
+    int minPairSum(vector<int>& nums) {
+        
+        //<-----------------------USING SORTING------------------>
+
+        sort(nums.begin(),nums.end());
+        int i=0;
+        int j=nums.size()-1;
+        int maximum=-1;
+        while(i<j){
+          maximum=max(maximum,nums[i]+nums[j]);
+            i++;
+            j--;
+        }
+        return maximum;
+    }
+};
+
+//<-----------------------------------------------------DAY-4-O7/09/24----------------------------------------------------->
+
 
 
 
