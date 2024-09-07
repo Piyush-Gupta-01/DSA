@@ -156,6 +156,29 @@ public:
     }
 };
 
+503.Next Greater Element-2 LEETCODE
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& num) {
+        
+        //<------------------USING STACK--------------------->
 
+    stack<int>st;
+    int n=num.size();
+    vector<int>vc(n,-1);
+    for(int i=2*n-1;i>=0;i--){
+       
+        while(!st.empty()&&st.top()<=num[i%n]){
+            st.pop();
+        }
+        if(i<n){
+       vc[i]=(st.empty())?-1:st.top();
+        }
+      st.push(num[i%n]);
+    }
+   
+    return vc;
+    }
+};
 
 
