@@ -244,3 +244,36 @@ public:
     }
 };
 
+//<------------------------------------------------DAY-7 10/09/24---------------------------------------------------------->
+1047. Remove All Adjacent Duplicates In String LEETCODE
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char>st;
+      int i=0;
+      while(i<s.size()){
+        if(st.empty()){
+            st.push(s[i]);
+        }
+        else if(s[i]==st.top()){
+          st.pop();
+        }
+        else{
+            st.push(s[i]);
+        }
+        i++;
+      }
+      string res;
+      while(!st.empty()){
+      res=st.top()+res;
+      st.pop();
+      }
+      return res;
+    }
+};
+
+//<--------------------------------------------DAY-8 11/09/24--------------------------------------------------------------->
+
+
+
+
