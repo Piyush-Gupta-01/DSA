@@ -290,5 +290,103 @@ public:
     }
 };
 
+//<--------------------------------------------DAY-9 14/09/24--------------------------------------------------------------->
+860. Lemonade Change LEETCODE
+class Solution {
+public:
+    bool lemonadeChange(vector<int>& bills) {
+        if(bills[0]!=5) return false;
+        int count5=0,count10=0;
+        for(int i=0;i<bills.size();i++){
+            if(bills[i]==5) count5++;
+            else if(bills[i]==10){
+                if(count5>0){
+                     count5--;
+                }else return false;
+                count10++;
+            }else{
+                if(count10>0&&count5>0){
+                    count5--;
+                    count10--;
+                }else if(count5>=3){
+                    count5-=3;
+                } else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+
+451. Sort Characters By Frequency LEETCODE
+class Solution {
+public:
+    string frequencySort(string s) {
+        unordered_map<char,int>mp;
+        vector<pair<int,char>>vc;
+        for(auto num:s){
+            mp[num]++;
+        }
+        for(auto nums:mp){
+            vc.push_back({nums.second,nums.first});
+        }
+        sort(vc.rbegin(),vc.rend());
+        string ans;
+        for(auto num:vc){
+      ans.append(num.first,num.second);
+        }
+        return ans;
+    }
+};
+
+205. Isomorphic Strings LEETCODE
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        unordered_map<char,vector<int>>mp,mp1;
+        for(int i=0;i<s.size();i++){
+            mp[s[i]].push_back(i);
+        } for(int i=0;i<t.size();i++){
+            mp1[t[i]].push_back(i);
+        }
+        for(int i=0;i<s.size();i++){
+            if(mp[s[i]]!=mp1[t[i]]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+//<--------------------------------------------DAY-10 15/09/24--------------------------------------------------------------->
+3254. Find the Power of K-Size Subarrays-I LEETCODE
+class Solution {
+public:
+    vector<int> resultsArray(vector<int>& nums, int k) {
+        
+        vector<int>ans;
+        for(int i=0;i<=nums.size()-k;i++){
+           vector<int> arr(nums.begin() + i, nums.begin() + i + k);
+            ans.push_back(check(arr));
+        }
+        return ans;
+       
+    }
+    private:
+    int check(vector<int>& arr){
+        for(int i=1;i<arr.size();i++){
+            if(arr[i]!=arr[i-1]+1){
+                return -1;
+            }
+        }
+       vector<int>sorted(arr);
+        sort(sorted.begin(),sorted.end());
+        if(arr!=sorted) return -1;
+
+        return *max_element(arr.begin(),arr.end());
+
+    }
+};
 
 
