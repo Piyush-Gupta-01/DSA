@@ -406,3 +406,24 @@ public:
       return res.back();
     }
 };
+
+//<--------------------------------------------DAY-12 17/09/24--------------------------------------------------------------->
+383. Ransom Note LEETCODE
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        unordered_map<char,int>mp1,mp2;
+        for(auto str:ransomNote){
+            mp1[str]++;
+        }
+        for(auto str:magazine){
+            mp2[str]++;
+        }
+        for(auto str:ransomNote){
+            if(mp1[str]>mp2[str]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
