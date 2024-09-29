@@ -448,3 +448,29 @@ public:
         return res;
     }
 };
+
+//<--------------------------------------------DAY-14 29/09/24--------------------------------------------------------------->
+49. Group Anagrams LEETCODE
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        //creating map of string as a key and vector as value
+        unordered_map<string, vector<string>>mp;
+        //iterating throughout the string 
+        for(auto ch:strs){
+            string temp=ch;
+            //picking current string and sorting 
+            sort(temp.begin(),temp.end());
+            //after sorted key becomes unique and value might comes similar
+            //for ex- eat->sort->aet then tea->sort->aet...aet is your key and eat and tea push in map vector
+            mp[temp].push_back(ch);
+        }
+         vector<vector<string>>res;
+         //geting vector of string from map values
+         for(auto m:mp){
+            //putting them in result array
+         res.push_back(m.second);
+         }
+         return res;
+    }
+};
