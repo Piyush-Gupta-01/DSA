@@ -474,3 +474,25 @@ public:
          return res;
     }
 };
+
+//<--------------------------------------------DAY-15 30/09/24--------------------------------------------------------------->
+3159. Find Occurrences of an Element in an Array LEETCODE.
+class Solution {
+public:
+    vector<int> occurrencesOfElement(vector<int>& nums, vector<int>& queries, int x){
+        vector<int>res,index;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==x){
+                index.push_back(i);
+            }
+        } 
+        for(auto num:queries){
+            if(num<=index.size()){
+                res.push_back(index[num-1]);}
+                else{
+                    res.push_back(-1);
+                }
+                    }  
+                    return res;              
+    }
+};
