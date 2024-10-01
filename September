@@ -496,3 +496,32 @@ public:
                     return res;              
     }
 };
+
+//<--------------------------------------------DAY-16 01/10/24--------------------------------------------------------------->
+3194. Minimum Average of Smallest and Largest Elements LEETCODE.
+class Solution {
+public:
+    double minimumAverage(vector<int>& nums){
+        vector<double>averages;  //creating a answer vector named averages
+        while(nums.size()>1){ //running while loop until its remove all the elements of nums 
+            auto maxIter = max_element(nums.begin(),nums.end()); //as here before max_element there is no * so it will give a 
+            auto minIter = min_element(nums.begin(),nums.end()); //iterator to max and min element.
+            int minElement = *minIter; //here when we put * on that it will give an element of pointing iterator
+            int maxElement = *maxIter; 
+          //these if else lines are important as if we dont do this it after removing max element it will shift the position
+          //and as all elements position was changed so if you try to remove min element after max that is wrong.
+             if (maxIter > minIter) { //check which is greater that will come first
+                nums.erase(maxIter);
+                nums.erase(minIter);
+            } else {
+                nums.erase(minIter);
+                nums.erase(maxIter);
+            }
+            double avg=(minElement+maxElement)/2.0; //store in double as it have floating output
+            averages.push_back(avg);//push it on answer array
+        }
+        if(nums.size()==1) averages.push_back(nums[0]); //check if there is odd elements then 1 will remain so push it as it is.
+        return *min_element(averages.begin(),averages.end()); //returning the min of averages.
+    }
+};
+
