@@ -525,3 +525,32 @@ public:
     }
 };
 
+//<--------------------------------------------DAY-17 04/10/24--------------------------------------------------------------->
+1046. Last Stone Weight LEETCODE
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+        priority_queue<int>pq;
+        for(auto it:stones){
+            pq.push(it);
+        }
+        while(pq.size()>1){
+            int x=pq.top();
+            pq.pop();
+            int y=pq.top();
+            pq.pop();
+            int z=x-y;
+            if(z>0){
+                pq.push(z);
+            }
+        }
+        if(pq.size()>0) return pq.top();
+        else return 0;
+    }
+};
+
+
+
+
+
+
