@@ -71,3 +71,32 @@ public:
        return intervals.size()-counter;//so by substracting overlapping to the size of interval we get non-over lapping elements
     }
 };
+
+//<--------------------------------------------DAY-03 06/10/24--------------------------------------------------------------->
+2406. Divide Intervals Into Minimum Number of Groups
+class Solution {
+public:
+    int minGroups(vector<vector<int>>& intervals) {
+        /*
+        1.firstly we will sort the intervals by their left.
+        2.Use priority Queue(Min heap) of int
+        3.Take a loop in which we have auto/reference variable which travels whole interval.
+        4.While traversing everyTime we will store the current intervals left and right into start or end respectively.
+        5.then check if queue is not empty and the top element is less than the current start.
+        4.if condition is true we will pop the elements of queue.
+        5.After that we will simply push the current end into the priorityQueue.
+        6.At last we will simply return the size of the priority queue becoz it contains the total groups one-one elements which can determine the no. of groups.
+        */
+
+        sort(intervals.begin(),intervals.end());
+        priority_queue<int, vector<int> ,greater<int>>pq;
+        for(auto it:intervals) {
+            int start=it[0],end=it[1];
+            if(!pq.empty() && pq.top()<start){
+                pq.pop();
+            }
+            pq.push(end);
+        }
+        return pq.size();
+    }
+};
